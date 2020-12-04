@@ -5,15 +5,15 @@
 
 ### Examples
 ```py
-from winActivate import winActivate as winAct
+from winActivate import winActivate
 
 
 # Activate window with partial winTitle string.
-winAct(window="Book1", titlematchmode=1)
+winActivate(window="Book1", titlematchmode=1)
 
 
 # Activate window with exact winTitle string.
-winAct(window="Book1.xlsx - Excel", titlematchmode=0)
+winActivate(window="Book1.xlsx - Excel", titlematchmode=0)
 
 ```
 

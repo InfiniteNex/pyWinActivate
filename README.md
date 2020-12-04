@@ -5,8 +5,7 @@
 
 ### Examples
 ```py
-from winActivate import winActivate
-from winActivate import winWaitActive
+from winActivate import winActivate, winWaitActive
 
 
 # Activate window with partial winTitle string.

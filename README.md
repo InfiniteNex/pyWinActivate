@@ -16,8 +16,3 @@ winActivate(window="Book1", titlematchmode=1)
 winActivate(window="Book1.xlsx - Excel", titlematchmode=0)
 
 ```
-
-
-###Todo:
-* error handling
-* winWait function

@@ -6,6 +6,7 @@
 ### Examples
 ```py
 from winActivate import winActivate
+from winActivate import winWaitActive as winWait
 
 
 # Activate window with partial winTitle string.

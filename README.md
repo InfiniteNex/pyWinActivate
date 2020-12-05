@@ -3,6 +3,12 @@
 ## Just like WinActivate in AutoHotkey, this module lets you easily activate and focus an opened window.
 
 
+## Installation
+```py
+pip install pyWinActivate
+```
+
+
 ### Examples
 ```py
 from winActivate import winActivate, winWaitActive

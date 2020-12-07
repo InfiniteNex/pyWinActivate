@@ -1,45 +1,23 @@
 import win32gui
 import time
 
-
-def win_activate(window, titlematchmode=None):
+# v1.2.0
+def win_activate(window_title, partial_match=False):
     """
-    TitleMatchMode: 0 = full title, 1 = part title
-    """
-    
-    if titlematchmode == 0:
-        match_full(window)
-    elif titlematchmode == 1:
-        match_soft(window)
-
-
-
-def match_full(window):
-    """
-    Activate and focus a window based on full title, passed as a string.
+    Activate and focus a window based on title, passed as a string.
     """
 
-    handle = win32gui.FindWindow(0, window)
+    if partial_match:
+        for proc in get_app_list():
+            if window_title in proc[1]:
+                window_title = proc[1]
+                break
+        else:
+            raise Exception('Could not find window matching title')
+
+    handle = win32gui.FindWindow(0, window_title)
     win32gui.ShowWindow(handle, True)
-    win32gui.SetForegroundWindow(handle)  #put the window in foreground
-
-
-def match_soft(window):
-    """
-    Activate and focus a window based on part of the title, passed as a string.
-    """
-
-    processes = get_app_list()
-
-    for i in processes:
-        if window in str(i[1]):
-            window = i[1]
-            break
-
-    handle = win32gui.FindWindow(0, window)
-    win32gui.ShowWindow(handle, True)
-    win32gui.SetForegroundWindow(handle)  #put the window in foreground
-
+    win32gui.SetForegroundWindow(handle)
 
 
 def window_enum_handler(hwnd, resultList):
@@ -50,8 +28,6 @@ def get_app_list():
     mlst=[]
     win32gui.EnumWindows(window_enum_handler, mlst)
     return mlst
-
-
 
 
 

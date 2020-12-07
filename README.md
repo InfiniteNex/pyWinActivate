@@ -9,11 +9,10 @@ from pyWinActivate import win_activate, win_wait_active
 
 
 # Activate window with partial winTitle string.
-win_activate(window="Book1", titlematchmode=1)
-
+win_activate(window_title="Book1", partial_match=True)
 
 # Activate window with exact winTitle string.
-win_activate(window="Book1.xlsx - Excel", titlematchmode=0)
+win_activate(window_title="Book1.xlsx - Excel", partial_match=False)
 
 
 
@@ -27,8 +26,17 @@ win_wait_active(win_to_wait=Book1.xlsx - Excel, exception="potential popup windo
 
 
 ## Changes
+### 1.2.0
+#### Refactored win_activate()
+#### It now takes window_title and partial_match(T/F) as arguments instead of window and titlematchmode(0/1)
+
+
 ### 1.1.1
 #### Changed function names to follow PEP8 guidelines
 #### Changed get_app_list() to not use mutable deafults
 #### Added argument to win_wait_active() to turn off the message while waiting. Its True by default.
 #### Changed some function argument names to be more desriptive.
+
+
+
+#### Special thanks to reddit user u/JohnnyJordaan with help on the code simplification.

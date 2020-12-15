@@ -1,7 +1,7 @@
 import win32gui
 import time
 
-# v1.2.0
+# v1.2.1
 def win_activate(window_title, partial_match=False):
     """
     Activate and focus a window based on title, passed as a string.
@@ -34,17 +34,16 @@ def get_app_list():
 def win_wait_active(win_to_wait, exception=None, message=True):
     """
     Waits for the specified window to be active.
-    Only works with titlematchmaking set to 0/full title.
     Can stop waiting if an exception is given, in cases where a popup window may appear.
     """
 
     time.sleep(0.25)
-    while win_to_wait != win32gui.GetWindowText(win32gui.GetForegroundWindow()):
+    while win_to_wait not in win32gui.GetWindowText(win32gui.GetForegroundWindow()):
         if message:
             print("win_wait_active: Waiting for window to appear. Make sure you're matching the full title.")
     
         time.sleep(0.25)
-        if win_to_wait == win32gui.GetWindowText(win32gui.GetForegroundWindow()):
+        if win_to_wait in win32gui.GetWindowText(win32gui.GetForegroundWindow()):
             break
     
         if exception:
